@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+  	<meta charset="utf-8">
+  	<meta name="description" content="Your description goes here">
+  	<meta name="keywords" content="one, two, three">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<title>Baby's Med Journal</title>
+
+		<!-- external CSS link -->
+		<link rel="stylesheet" href="css/normalize.css">
+		<link rel="stylesheet" href="css/style.css">
+	</head>
+	<body>
+		<!-- <h1>Infant Medicine Tracker</h1>
+		<h2>Keep track of your infant's medication and temperature</h2> -->
+		<img src="/img/babys-med-journal-high-resolution-logo-white-on-transparent-background.png" alt="Baby Icon" id="baby-icon" />
+
+		<div id="baby-info-container" class="form-container"></div>
+	
+		<form id="medicine-form">
+		  <div class="form-row">
+			<label for="medicine">Medicine:</label>
+			<select name="medicine" id="medicine">
+			  <option value="Tylenol">Tylenol</option>
+			  <option value="Motrin">Motrin</option>
+			</select>
+	
+			<label for="temperature">Temperature:</label>
+			<input
+			  type="number"
+			  step="0.1"
+			  min="92.0"
+			  max="112.0"
+			  id="temperature"
+			  name="temperature"
+			  placeholder="Enter temperature"
+			/>
+		  </div>
+	
+		  <label for="notes">Notes:</label>
+		  <textarea
+			id="notes"
+			name="notes"
+			placeholder="Enter extra notes"
+			rows="3"
+		  ></textarea>
+	
+		  <button type="submit">Add Record</button>
+		</form>
+	
+		<div id="medicine-cards"></div>
+	
+		<script src="js/main.js"></script>
+	</body>
+	<footer>
+		<span>Derick Young 2023 derickyoungjr.com</span>
+	</footer>
+</html>

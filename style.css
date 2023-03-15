@@ -1,0 +1,201 @@
+body {
+  font-family: Arial, sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem;
+  background-image: linear-gradient(330deg, #e9cff1, #dfcef5, #d2cef8, #c5cef9, #b6cefa, #a7cff8, #98cff5, #89cff0);
+  min-height: 100vh;
+  color: #0CAFFF;
+}
+
+/* h1 {
+  text-align: center;
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+
+h2 {
+  text-align: center;
+  font-weight: normal;
+  margin-bottom: 1rem;
+  color: #fff;
+} */
+
+#baby-icon {
+  display: block;
+  /*width: 80px;*/
+  height: 100px;
+  margin: 0 auto 2rem;
+  padding: 1rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  /*font-family: 'Open Sans', sans-serif;*/
+}
+
+input,
+select,
+textarea {
+  margin-bottom: 1rem;
+  padding: 0.25rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+#temperature {
+  width: 9rem;
+}
+
+button {
+  background-color: #0CAFFF;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  align-self: flex-end;
+}
+
+button:hover {
+  background-color: #3a6db3;
+}
+
+.medicine-card {
+  position: relative;
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.medicine-card h3 {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  /* color: #0CAFFF;  */
+  text-decoration: underline;
+}
+
+.medicine-card button {
+  margin-left: 0.5rem;
+}
+
+.delete-button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+
+.medicine-card p {
+  margin-bottom: 0.25rem;
+}
+
+.medicine-card p:last-child {
+  margin-bottom: 0;
+}
+
+.temp-normal {
+  color: green;
+}
+
+.temp-low {
+  color: #92d050;
+}
+
+.temp-average {
+  color: #e0cd00
+}
+
+.temp-high {
+  color: #e78a00;
+}
+
+.temp-very-high {
+  color: #ff3333;
+}
+
+.temp-dangerous {
+  color: rgb(200, 0, 0);
+}
+
+strong, h3 {
+  color: black;
+}
+
+.info-link {
+  color: #0CAFFF;
+  /* text-decoration: none; */
+}
+
+.info-link:hover {
+  color: #3a6db3;
+  text-decoration: underline;
+}
+
+#baby-info-form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+#baby-info-form label {
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+#baby-info-form input {
+  font-family: 'Open Sans', sans-serif;
+  margin-bottom: 1rem;
+  padding: 0.25rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#baby-info-form button {
+  background-color: #0CAFFF;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  align-self: flex-end;
+  transition-duration: 0.4s;
+}
+
+#baby-info-form button:hover {
+  background-color: #3a6db3;
+}
+
+.form-container {
+  padding: 1rem;
+}
+
+footer span {
+  color: #fff;
+}
+
+footer {
+  text-align: center;
+  padding: .5rem;
+}
+
+/* Add a media query for mobile devices */
+@media screen and (max-width: 768px) {
+  #baby-icon {
+    height: 80px;
+  }
+}
