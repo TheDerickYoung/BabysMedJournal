@@ -26,7 +26,7 @@ function createBabyInfoForm() {
       age: age,
       weight: weight
     };
-  
+
     localStorage.setItem("babyInfo", JSON.stringify(babyInfo));
   }
 
@@ -37,32 +37,40 @@ function createBabyInfoForm() {
   }
 
   //event listener for the baby's information form and to render it conditionally
-  function initBabyInfoForm() {
-    const babyInfoContainer = document.getElementById("baby-info-container");
-    const babyInfo = loadBabyInfoFromLocalStorage();
-  
-    //fires only if there is not baby's info already stored in local storage
-    if (!babyInfo) {
-      const babyInfoForm = createBabyInfoForm();
-      babyInfoContainer.appendChild(babyInfoForm);
-  
-      babyInfoForm.addEventListener("submit", function (event) {
-        event.preventDefault();
-  
-        const babyName = document.getElementById("baby-name").value;
-        const babyAge = document.getElementById("baby-age").value;
-        const babyWeight = document.getElementById("baby-weight").value;
-  
-        if (!babyName || !babyAge || !babyWeight) {
-          alert("Please fill in all required fields");
-          return;
-        }
-  
-        saveBabyInfoToLocalStorage(babyName, parseInt(babyAge), parseFloat(babyWeight));
-        babyInfoContainer.innerHTML = ""; // Remove the form from the DOM
-      });
-    }
+  //event listener for the baby's information form and to render it conditionally
+function initBabyInfoForm() {
+  const babyInfoContainer = document.getElementById("baby-info-container");
+  const babyInfo = loadBabyInfoFromLocalStorage();
+
+  //fires only if there is not baby's info already stored in local storage
+  if (!babyInfo) {
+    const babyInfoForm = createBabyInfoForm();
+    babyInfoContainer.appendChild(babyInfoForm);
+
+    babyInfoForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const babyName = document.getElementById("baby-name").value;
+      const babyAge = document.getElementById("baby-age").value;
+      const babyWeight = document.getElementById("baby-weight").value;
+
+      if (!babyName || !babyAge || !babyWeight) {
+        alert("Please fill in all required fields");
+        return;
+      }
+
+      if (/\d/.test(babyName)) {
+        alert("Baby's name should not contain numbers");
+        document.getElementById("baby-name").value = "";
+        return;
+      }
+
+      saveBabyInfoToLocalStorage(babyName, parseInt(babyAge), parseFloat(babyWeight));
+      babyInfoContainer.innerHTML = ""; // Remove the form from the DOM
+    });
   }
+}
+
 
   //Call the baby form functions 
   initBabyInfoForm();
@@ -163,15 +171,18 @@ function createCard(medicine, temperature, notes, timestamp, babyInfo) {
   
    //pretty self-explanatory here
   function loadCardsFromLocalStorage() {
-    const cardsData = JSON.parse(localStorage.getItem("medicineCards"));
-  
-    if (cardsData) {
-      cardsData.forEach(function (cardData) {
-        const card = createCard(cardData.medicine, parseFloat(cardData.temperature), cardData.notes, cardData.timestamp);
-        document.getElementById("medicine-cards").appendChild(card);
-      });
-    }
+  const cardsData = JSON.parse(localStorage.getItem("medicineCards"));
+
+  if (cardsData) {
+    const babyInfo = loadBabyInfoFromLocalStorage(); // Get babyInfo from localStorage
+    cardsData.forEach(function (cardData) {
+      const card = createCard(cardData.medicine, parseFloat(cardData.temperature), cardData.notes, cardData.timestamp, babyInfo);
+      document.getElementById("medicine-cards").appendChild(card);
+    });
   }
+}
+  
+
   //event listener to create new card and save to local storage
   document.getElementById("medicine-form").addEventListener("submit", function (event) {
     event.preventDefault();
@@ -198,8 +209,3 @@ function createCard(medicine, temperature, notes, timestamp, babyInfo) {
   
   //pretty self explanatory again
   loadCardsFromLocalStorage();
-
-
-  //debating on making medicine titles the same color as packaging idk yet though -- might add more medicines and that can get crazy at that point.
-  //motrin: 251, 55, 25
-  //tylenol 226, 0, 43
