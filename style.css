@@ -73,6 +73,14 @@ button:hover {
   background-color: #3a6db3;
 }
 
+.delete-button {
+  background-color: red;
+}
+
+.edit-button {
+  background-color: rgb(149, 198, 35);
+}
+
 .medicine-card {
   position: relative;
   background-color: #fff;
