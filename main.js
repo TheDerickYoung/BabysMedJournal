@@ -72,47 +72,45 @@ function createBabyInfoForm() {
 //Regular functionality of app begins below.
 
 //function to create a new card with the appropriate data
-function createCard(medicine, temperature, notes, timestamp) {
-    const newCard = document.createElement("div");
-    newCard.className = "medicine-card";
-  
-    const tempMessage = getTemperatureMessage(parseFloat(temperature));
-  
-    newCard.innerHTML = `
-      <button class="delete-button">Delete</button>
-      <h3>${medicine}</h3>
-      <button class="edit-button">Edit</button>
-      <p><strong>Temperature:</strong> <span>${temperature}°F</span></p>
-      <p><strong>Temperature Message:</strong> <span class="${tempMessage.styleClass}">${tempMessage.message}</span> <a href="https://www.seattlechildrens.org/conditions/a-z/fever-0-12-months/" target="_blank" class="info-link">Learn more</a></p>
-      <p><strong>Timestamp:</strong> ${timestamp}</p>
-      <p><strong>Notes:</strong> <span>${notes}</span></p>
-    `;
-  
-    //function to delete a card
-    newCard.querySelector(".delete-button").onclick = function () {
-      newCard.remove();
-      saveCardsToLocalStorage();
-    };
+function createCard(medicine, temperature, notes, timestamp, babyInfo) {
+  const newCard = document.createElement("div");
+  newCard.className = "medicine-card";
 
+  const tempMessage = getTemperatureMessage(parseFloat(temperature));
 
-    //function that allows the user to edit only the medicine, temperature and notes section of each card
-    newCard.querySelector(".edit-button").onclick = function () {
-        const editableElements = [
-          newCard.querySelector("h3"),
-          newCard.querySelectorAll("p > strong + span")[0],
-          newCard.querySelector("p:last-child > span"),
-        ];
-      
-        editableElements.forEach(function (element) {
-          element.contentEditable = element.contentEditable === "true" ? "false" : "true";
-        });
-      
-        this.textContent = this.textContent === "Edit" ? "Save" : "Edit";
-      };
-            
-  
-    return newCard;
-  }
+  newCard.innerHTML = `
+    <button class="delete-button">Delete</button>
+    <h3>${medicine}</h3>
+    <button class="edit-button">Edit</button>
+    <p><strong>${babyInfo.name}'s Temperature:</strong> <span>${temperature}°F</span></p>
+    <p><strong>Temperature Message:</strong> <span class="${tempMessage.styleClass}">${tempMessage.message}</span> <a href="https://www.seattlechildrens.org/conditions/a-z/fever-0-12-months/" target="_blank" class="info-link">Learn more</a></p>
+    <p><strong>Timestamp:</strong> ${timestamp}</p>
+    <p><strong>Notes:</strong> <span>${notes}</span></p>
+  `;
+
+  //function to delete a card
+  newCard.querySelector(".delete-button").onclick = function () {
+    newCard.remove();
+    saveCardsToLocalStorage();
+  };
+
+  //function that allows the user to edit only the medicine, temperature and notes section of each card
+  newCard.querySelector(".edit-button").onclick = function () {
+    const editableElements = [
+      newCard.querySelector("h3"),
+      newCard.querySelectorAll("p > strong + span")[0],
+      newCard.querySelector("p:last-child > span"),
+    ];
+
+    editableElements.forEach(function (element) {
+      element.contentEditable = element.contentEditable === "true" ? "false" : "true";
+    });
+
+    this.textContent = this.textContent === "Edit" ? "Save" : "Edit";
+  };
+
+  return newCard;
+}
   
   //function that decides which temperature message to display in the DOM
   function getTemperatureMessage(temperature) {
@@ -186,6 +184,25 @@ function createCard(medicine, temperature, notes, timestamp) {
       alert("Please fill in all required fields");
       return;
     }
+  
+    const timestamp = new Date().toLocaleString();
+    const babyInfo = loadBabyInfoFromLocalStorage();
+    const newCard = createCard(medicine, temperature, notes, timestamp, babyInfo);
+    document.getElementById("medicine-cards").appendChild(newCard);
+  
+    saveCardsToLocalStorage();
+  
+    document.getElementById("temperature").value = "";
+    document.getElementById("notes").value = "";
+  });
+  
+  //pretty self explanatory again
+  loadCardsFromLocalStorage();
+
+
+  //debating on making medicine titles the same color as packaging idk yet though -- might add more medicines and that can get crazy at that point.
+  //motrin: 251, 55, 25
+  //tylenol 226, 0, 43
   
     const timestamp = new Date().toLocaleString();
     const newCard = createCard(medicine, temperature, notes, timestamp);
