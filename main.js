@@ -203,16 +203,3 @@ function createCard(medicine, temperature, notes, timestamp, babyInfo) {
   //debating on making medicine titles the same color as packaging idk yet though -- might add more medicines and that can get crazy at that point.
   //motrin: 251, 55, 25
   //tylenol 226, 0, 43
-  
-    const timestamp = new Date().toLocaleString();
-    const newCard = createCard(medicine, temperature, notes, timestamp);
-    document.getElementById("medicine-cards").appendChild(newCard);
-  
-    saveCardsToLocalStorage();
-  
-    document.getElementById("temperature").value = "";
-    document.getElementById("notes").value = "";
-  });
-  
-  //pretty self explanatory again
-  loadCardsFromLocalStorage();
