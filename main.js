@@ -209,3 +209,5 @@ function createCard(medicine, temperature, notes, timestamp, babyInfo) {
   
   //pretty self explanatory again
   loadCardsFromLocalStorage();
+
+//add feature that allows users to search through cards for specific temperatures?
