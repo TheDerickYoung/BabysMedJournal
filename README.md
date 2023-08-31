@@ -1,6 +1,6 @@
 # Baby's Med Journal
 
-This application allows the user to document and record their baby's medicine, temperature and any other relevant notes to help make it easier to track and manage medications and the time they were given between parents, family, and babysitters, etc.
+This app makes it simple to record and share essential information about your baby's health, like medications, temperature, and important notes. It's a hassle-free way to keep track of everything during illnesses, ensuring smooth teamwork among parents, family, and babysitters.
 
 <img width="1439" alt="baby-med-journal" src="https://github.com/TheDerickYoung/BabysMedJournal/assets/119906716/7584dde6-a8cb-4941-8ced-fcb425e96c1a">
 
