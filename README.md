@@ -50,3 +50,5 @@ During the development of the "Baby's Med Journal" project, several valuable les
 - User-Centric Design: Designing the user interface and considering user experience played a vital role in this project. Creating an intuitive layout, providing informative feedback, and anticipating user needs contributed to a more satisfying and user-friendly application.
 
 These lessons have deepened the understanding of web development principles, fostered problem-solving skills, and reinforced the importance of continuous learning and growth as a software engineer.
+
+Thanks for visiting!
